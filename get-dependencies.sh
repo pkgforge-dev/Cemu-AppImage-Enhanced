@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -eux
+ARCH="$(uname -m)"
 EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
 
 echo "Installing dependencies..."
@@ -28,6 +29,14 @@ chmod +x ./get-debloated-pkgs.sh
 
 echo "Building cemu..."
 echo "---------------------------------------------------------------"
+sed -i -e 's|EUID == 0|EUID == 69|g' /usr/bin/makepkg
+sed -i \
+	-e 's|-O2|-O3|'                              \
+	-e 's|MAKEFLAGS=.*|MAKEFLAGS="-j$(nproc)"|'  \
+	-e 's|#MAKEFLAGS|MAKEFLAGS|'                 \
+	/etc/makepkg.conf
+cat /etc/makepkg.conf
+
 git clone --depth 1 https://aur.archlinux.org/cemu.git ./cemu && (
 	cd ./cemu
 	sed -i -e "s|x86_64|$ARCH|" ./PKGBUILD
