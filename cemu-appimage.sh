@@ -8,7 +8,7 @@ SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/h
 VERSION="$(cat ~/version)"
 
 export ADD_HOOKS="self-updater.bg.hook"
-export ICON=/usr/share/pixmaps/cemu.png
+export ICON=/usr/share/icons/hicolor/128x128/apps/info.cemu.Cemu.png
 export DESKTOP=/usr/share/applications/cemu.desktop
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
 export DEPLOY_OPENGL=1
