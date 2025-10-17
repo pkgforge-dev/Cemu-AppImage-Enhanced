@@ -22,7 +22,7 @@ chmod +x ./quick-sharun
 
 # allow the host vulkan to be used for aarch64 given the sad situation
 if [ "$ARCH" = 'aarch64' ]; then
-	echo 'SHARUN_ALLOW_SYS_VKICD=1' > ./AppDir/.env
+	echo 'SHARUN_ALLOW_SYS_VKICD=1' >> ./AppDir/.env
 fi
 
 # MAKE APPIMAGE WITH URUNTIME
