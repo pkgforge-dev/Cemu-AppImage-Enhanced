@@ -20,6 +20,11 @@ wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
 chmod +x ./quick-sharun
 ./quick-sharun /usr/bin/cemu
 
+# allow the host vulkan to be used for aarch64 given the sad situation
+if [ "$ARCH" = 'aarch64' ]; then
+	echo 'SHARUN_ALLOW_SYS_VKICD=1' > ./AppDir/.env
+fi
+
 # MAKE APPIMAGE WITH URUNTIME
 wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
 chmod +x ./uruntime2appimage
