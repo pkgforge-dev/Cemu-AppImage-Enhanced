@@ -71,7 +71,6 @@ cmake .. -D ALLOW_PORTABLE=OFF \
 	  -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 	  -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \ # Required for stable
 	  -D ENABLE_VCPKG=OFF \
-	  $EXTRA_FLAGS \
 	  -Wno-dev -B build
 make -j $(nproc)
 
