@@ -73,7 +73,7 @@ cmake -D ALLOW_PORTABLE=OFF \
 	  -D ENABLE_VCPKG=OFF \
 	  -Wno-dev -B build
 cd build
-make -j$(nproc)
+make -j $(nproc)
 
 install -d /usr/{bin,share/Cemu}
 mv bin/Cemu_release /usr/bin/Cemu
