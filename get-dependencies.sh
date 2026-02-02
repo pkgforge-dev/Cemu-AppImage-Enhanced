@@ -11,33 +11,33 @@ pacman -Syu --noconfirm \
 	boost               \
 	clang               \
 	cmake               \
-	curl                \
 	fmt                 \
 	gcc-libs            \
 	glm                 \
 	glslang             \
 	glu                 \
-	gtk3                \
 	hicolor-icon-theme  \
 	hidapi              \
 	libgl               \
-	libpng              \
-	libusb              \
-	libx11              \
 	libzip              \
 	llvm                \
 	nasm                \
-	openssl             \
 	pipewire-audio      \
 	pipewire-jack       \
 	pugixml             \
 	rapidjson           \
 	vulkan-headers      \
-	wayland             \
 	wayland-protocols   \
-	zarchive            \
-	zlib                \
-	zstd
+	zarchive
+	#curl                \
+	#gtk3                \
+	#libpng              \
+	#libusb              \
+	#libx11              \
+	#openssl             \
+	#wayland             \
+	#zlib                \
+	#zstd
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
@@ -47,8 +47,29 @@ make-aur-package cubeb
 make-aur-package sdl2
 make-aur-package wxgtk-git
 
-echo "Building cemu..."
+echo "Building Cemu..."
 echo "---------------------------------------------------------------"
+REPO="https://github.com/cemu-project/Cemu"
+# Determine to build nightly or stable
+if [ "${DEVEL_RELEASE-}" = 1 ]; then
+	echo "Making nightly build of RigelEngine..."
+	# Get the latest tag
+    TAG=$(git ls-remote --tags --sort="v:refname" https://github.com/cemu-project/Cemu | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')
+    # Get the short hash
+    HASH=$(git ls-remote "$REPO" HEAD | cut -c 1-8)
+    VERSION="${TAG}-${HASH}"
+    git clone --recursive "$REPO" ./Cemu
+else 
+stable is having issues upstream to compile
+	echo "Making stable build of RigelEngine..."
+	VERSION="$(git ls-remote --tags --sort="v:refname" https://github.com/cemu-project/Cemu | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
+	git clone --branch v"$VERSION" --single-branch --recursive "$REPO" ./Cemu
+fi
+echo "$VERSION" > ~/version
+
+
+#echo "Building cemu..."
+#echo "---------------------------------------------------------------"
 
 # build with x86_64_v3 target
 #if [ "${DEVEL_RELEASE-}" = 1 ]; then
@@ -63,6 +84,15 @@ git clone --recursive https://github.com/cemu-project/Cemu
 
 cd Cemu
 mkdir -p build && cd build
+
+# Add x86-64-v3 optimization only if on x86_64
+if [ "$ARCH" == "x86_64" ]; then
+    echo "Detected x86_64: Adding TARGET_V3_CPU=1"
+    EXTRA_FLAGS="-DTARGET_V3_CPU=1"
+else
+    echo "Detected $ARCH: Skipping x86-64-v3 flags"
+fi
+
 cmake .. -D ALLOW_PORTABLE=OFF \
 	  -D CMAKE_BUILD_TYPE=Release \
 	  -D CMAKE_C_COMPILER=clang \
@@ -72,6 +102,7 @@ cmake .. -D ALLOW_PORTABLE=OFF \
 	  -D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 	  -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 	  -D ENABLE_VCPKG=OFF \
+	  $EXTRA_FLAGS \
 	  -Wno-dev -B build
 make -j $(nproc)
 
