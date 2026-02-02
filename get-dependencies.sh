@@ -37,7 +37,6 @@ pacman -Syu --noconfirm pipewire-audio pipewire-jack \
 	zarchive \
 	zlib \
 	zstd
-	#wxwidgets-gtk3
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
