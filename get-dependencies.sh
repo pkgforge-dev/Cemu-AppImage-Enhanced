@@ -25,6 +25,7 @@ pacman -Syu --noconfirm \
 	pipewire-jack       \
 	pugixml             \
 	rapidjson           \
+	sdl2				\
 	vulkan-headers      \
 	wayland-protocols   \
 	zarchive
@@ -34,7 +35,6 @@ echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common ! llvm
 
 make-aur-package cubeb
-make-aur-package sdl2
 make-aur-package wxgtk-git
 
 echo "Building Cemu..."
