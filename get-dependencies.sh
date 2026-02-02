@@ -62,7 +62,8 @@ echo "---------------------------------------------------------------"
 git clone --recursive https://github.com/cemu-project/Cemu
 
 cd Cemu
-cmake -D ALLOW_PORTABLE=OFF \
+mkdir -p build && cd build
+cmake .. -D ALLOW_PORTABLE=OFF \
 	  -D CMAKE_BUILD_TYPE=Release \
 	  -D CMAKE_C_COMPILER=clang \
 	  -D CMAKE_CXX_COMPILER=clang++ \
@@ -72,7 +73,6 @@ cmake -D ALLOW_PORTABLE=OFF \
 	  -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 	  -D ENABLE_VCPKG=OFF \
 	  -Wno-dev -B build
-cd build
 make -j $(nproc)
 
 install -d /usr/{bin,share/Cemu}
