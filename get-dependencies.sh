@@ -28,16 +28,6 @@ pacman -Syu --noconfirm \
 	vulkan-headers      \
 	wayland-protocols   \
 	zarchive
-	#curl                \
-	#gcc-libs            \
-	#gtk3                \
-	#libpng              \
-	#libusb              \
-	#libx11              \
-	#openssl             \
-	#wayland             \
-	#zlib                \
-	#zstd
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
