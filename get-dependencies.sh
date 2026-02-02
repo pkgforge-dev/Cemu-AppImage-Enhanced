@@ -81,7 +81,7 @@ cmake .. -D ALLOW_PORTABLE=OFF \
 	  -Wno-dev -B build
 make -j $(nproc)
 
-install -d /usr/{bin,share/Cemu}
+install -d /usr/bin /usr/share/Cemu
 mv bin/Cemu_release /usr/bin/Cemu
 cp -dr --no-preserve=ownership -t /usr/share/Cemu bin/*
 install -Dm644 -t /usr/share/applications dist/linux/info.cemu.Cemu.desktop
