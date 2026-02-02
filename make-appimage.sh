@@ -15,7 +15,7 @@ export DEPLOY_VULKAN=1
 export DEPLOY_PIPEWIRE=1
 
 # Deploy dependencies
-quick-sharun /usr/bin/cemu
+quick-sharun /usr/bin/Cemu
 
 # Additional changes can be done in between here
 
