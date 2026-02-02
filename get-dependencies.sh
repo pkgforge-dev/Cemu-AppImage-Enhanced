@@ -11,26 +11,34 @@ pacman -Syu --noconfirm \
 	boost               \
 	clang               \
 	cmake               \
+	curl                \
 	fmt                 \
 	gcc-libs			\
 	glm                 \
 	glslang             \
 	glu                 \
+	gtk3                \
 	hicolor-icon-theme  \
 	hidapi              \
 	libgl               \
+	libpng              \
 	libusb				\
+	libx11              \
 	libzip              \
 	llvm                \
 	nasm                \
+	openssl             \
 	pipewire-audio      \
 	pipewire-jack       \
 	pugixml             \
 	rapidjson           \
 	sdl2				\
 	vulkan-headers      \
+	wayland             \
 	wayland-protocols   \
-	zarchive
+	zarchive            \
+	zlib                \
+	zstd
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
