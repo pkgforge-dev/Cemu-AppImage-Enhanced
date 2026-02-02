@@ -17,6 +17,7 @@ pacman -Syu --noconfirm pipewire-audio pipewire-jack \
 	bluez-libs \
 	boost \
 	cmake \
+	llvm \
 	curl \
 	fmt \
 	glm \
@@ -40,7 +41,7 @@ pacman -Syu --noconfirm pipewire-audio pipewire-jack \
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common
+get-debloated-pkgs --add-common ! llvm
 
 echo "Building cemu..."
 echo "---------------------------------------------------------------"
