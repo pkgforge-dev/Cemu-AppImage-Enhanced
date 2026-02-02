@@ -45,13 +45,13 @@ echo "Building cemu..."
 echo "---------------------------------------------------------------"
 
 # build with x86_64_v3 target
-if [ "${DEVEL_RELEASE-}" = 1 ]; then
+#if [ "${DEVEL_RELEASE-}" = 1 ]; then
 	#make-aur-package wxgtk-git
 	#make-aur-package cubeb
 	#TARGET_V3_CPU=1 make-aur-package cemu-git
-else
+#else
 	#TARGET_V3_CPU=1 make-aur-package cemu
-fi
+#fi
 make-aur-package cubeb
 
 git clone --recursive https://github.com/cemu-project/Cemu
