@@ -6,7 +6,37 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm pipewire-audio pipewire-jack
+pacman -Syu --noconfirm pipewire-audio pipewire-jack \
+	gcc-libs \
+	glslang \
+	hicolor-icon-theme \
+	libx11 \
+	pugixml \
+	sdl2 \
+	wxwidgets-gtk3 \
+	bluez-libs \
+	boost \
+	cmake \
+	cubeb \
+	curl \
+	fmt \
+	glm \
+	glu \
+	gtk3 \
+	hidapi \
+	libgl \
+	libpng \
+	libusb \
+	libzip \
+	nasm \
+	openssl \
+	rapidjson \
+	vulkan-headers \
+	wayland \
+	wayland-protocols \
+	zarchive \
+	zlib \
+	zstd
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
@@ -17,9 +47,28 @@ echo "---------------------------------------------------------------"
 
 # build with x86_64_v3 target
 if [ "${DEVEL_RELEASE-}" = 1 ]; then
-	make-aur-package wxgtk-git
-	make-aur-package cubeb
-	TARGET_V3_CPU=1 make-aur-package cemu-git
+	#make-aur-package wxgtk-git
+	#make-aur-package cubeb
+	#TARGET_V3_CPU=1 make-aur-package cemu-git
 else
-	TARGET_V3_CPU=1 make-aur-package cemu
+	#TARGET_V3_CPU=1 make-aur-package cemu
 fi
+
+git clone --recursive https://github.com/cemu-project/Cemu
+
+cd cemu
+cmake -D ALLOW_PORTABLE=OFF \
+		-D CMAKE_BUILD_TYPE=Release \
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-D ENABLE_VCPKG=OFF \
+		-Wno-dev -B build -S cemu
+
+cmake --build build
+
+install -d /usr/{bin,share/Cemu}
+mv bin/Cemu_release /usr/bin/Cemu
+cp -dr --no-preserve=ownership -t /usr/share/Cemu bin/*
+install -Dm644 -t /usr/share/applications dist/linux/info.cemu.Cemu.desktop
+install -Dm644 -t /usr/share/icons/hicolor/128x128/apps dist/linux/info.cemu.Cemu.png
+install -Dm644 -t /usr/share/metainfo dist/linux/info.cemu.Cemu.metainfo.xml
