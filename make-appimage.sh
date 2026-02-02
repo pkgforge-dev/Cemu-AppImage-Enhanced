@@ -3,7 +3,7 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(pacman -Q cemu | awk '{print $2; exit}') # example command to get version of application here
+#VERSION=$(pacman -Q cemu | awk '{print $2; exit}') # example command to get version of application here
 export ARCH VERSION
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.bg.hook:x86-64-v3-check.hook"
