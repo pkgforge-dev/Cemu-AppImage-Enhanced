@@ -12,12 +12,14 @@ pacman -Syu --noconfirm \
 	clang               \
 	cmake               \
 	fmt                 \
+	gcc-libs			\
 	glm                 \
 	glslang             \
 	glu                 \
 	hicolor-icon-theme  \
 	hidapi              \
 	libgl               \
+	libusb				\
 	libzip              \
 	llvm                \
 	nasm                \
