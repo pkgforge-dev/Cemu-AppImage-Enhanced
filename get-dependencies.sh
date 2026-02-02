@@ -6,36 +6,37 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm pipewire-audio pipewire-jack \
-	gcc-libs \
-	clang \
-	glslang \
-	hicolor-icon-theme \
-	libx11 \
-	pugixml \
-	sdl2 \
-	bluez-libs \
-	boost \
-	cmake \
-	llvm \
-	curl \
-	fmt \
-	glm \
-	glu \
-	gtk3 \
-	hidapi \
-	libgl \
-	libpng \
-	libusb \
-	libzip \
-	nasm \
-	openssl \
-	rapidjson \
-	vulkan-headers \
-	wayland \
-	wayland-protocols \
-	zarchive \
-	zlib \
+pacman -Syu --noconfirm \
+	bluez-libs          \
+	boost               \
+	clang               \
+	cmake               \
+	curl                \
+	fmt                 \
+	gcc-libs            \
+	glm                 \
+	glslang             \
+	glu                 \
+	gtk3                \
+	hicolor-icon-theme  \
+	hidapi              \
+	libgl               \
+	libpng              \
+	libusb              \
+	libx11              \
+	libzip              \
+	llvm                \
+	nasm                \
+	openssl             \
+	pipewire-audio      \
+	pipewire-jack       \
+	pugixml             \
+	rapidjson           \
+	vulkan-headers      \
+	wayland             \
+	wayland-protocols   \
+	zarchive            \
+	zlib                \
 	zstd
 
 echo "Installing debloated packages..."
@@ -53,8 +54,9 @@ echo "---------------------------------------------------------------"
 #else
 	#TARGET_V3_CPU=1 make-aur-package cemu
 #fi
-make-aur-package wxgtk-git
 make-aur-package cubeb
+make-aur-package sdl2
+make-aur-package wxgtk-git
 
 git clone --recursive https://github.com/cemu-project/Cemu
 
