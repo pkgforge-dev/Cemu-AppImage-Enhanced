@@ -55,11 +55,7 @@ echo "---------------------------------------------------------------"
 make-aur-package wxgtk-git
 make-aur-package cubeb
 
-if [ "$ARCH" = x86_64 ]; then
 git clone --recursive https://github.com/cemu-project/Cemu
-else
-git clone --recursive https://github.com/SSimco/Cemu
-fi
 
 cd Cemu
 cmake -D ALLOW_PORTABLE=OFF \
