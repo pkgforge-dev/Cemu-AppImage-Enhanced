@@ -12,7 +12,6 @@ pacman -Syu --noconfirm \
 	clang               \
 	cmake               \
 	fmt                 \
-	gcc-libs            \
 	glm                 \
 	glslang             \
 	glu                 \
@@ -30,6 +29,7 @@ pacman -Syu --noconfirm \
 	wayland-protocols   \
 	zarchive
 	#curl                \
+	#gcc-libs            \
 	#gtk3                \
 	#libpng              \
 	#libusb              \
@@ -79,7 +79,7 @@ echo "$VERSION" > ~/version
 	#TARGET_V3_CPU=1 make-aur-package cemu
 #fi
 
-git clone --recursive https://github.com/cemu-project/Cemu
+#git clone --recursive https://github.com/cemu-project/Cemu
 
 cd Cemu
 mkdir -p build && cd build
