@@ -44,11 +44,11 @@ REPO="https://github.com/cemu-project/Cemu"
 if [ "${DEVEL_RELEASE-}" = 1 ]; then
 	echo "Making nightly build of Cemu..."
 	VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
-    git clone --recursive "$REPO" ./Cemu
+    git clone --recursive --depth 1 "$REPO" ./Cemu
 else
 	echo "Making stable build of Cemu..."
 	VERSION="$(git ls-remote --tags --sort="v:refname" https://github.com/cemu-project/Cemu | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
-	git clone --branch v"$VERSION" --single-branch --recursive "$REPO" ./Cemu
+	git clone --branch v"$VERSION" --single-branch --recursive --depth 1 "$REPO" ./Cemu
 fi
 echo "$VERSION" > ~/version
 
