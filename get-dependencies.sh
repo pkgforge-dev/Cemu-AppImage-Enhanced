@@ -56,7 +56,7 @@ make-aur-package cubeb
 
 git clone --recursive https://github.com/cemu-project/Cemu
 
-cd cemu
+cd Cemu
 cmake -D ALLOW_PORTABLE=OFF \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
