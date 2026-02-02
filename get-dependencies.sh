@@ -13,7 +13,6 @@ pacman -Syu --noconfirm pipewire-audio pipewire-jack \
 	libx11 \
 	pugixml \
 	sdl2 \
-	wxwidgets-gtk3 \
 	bluez-libs \
 	boost \
 	cmake \
@@ -36,6 +35,7 @@ pacman -Syu --noconfirm pipewire-audio pipewire-jack \
 	zarchive \
 	zlib \
 	zstd
+	#wxwidgets-gtk3
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
