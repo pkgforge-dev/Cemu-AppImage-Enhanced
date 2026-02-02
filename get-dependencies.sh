@@ -17,7 +17,6 @@ pacman -Syu --noconfirm pipewire-audio pipewire-jack \
 	bluez-libs \
 	boost \
 	cmake \
-	cubeb \
 	curl \
 	fmt \
 	glm \
@@ -53,6 +52,7 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 else
 	#TARGET_V3_CPU=1 make-aur-package cemu
 fi
+make-aur-package cubeb
 
 git clone --recursive https://github.com/cemu-project/Cemu
 
