@@ -52,7 +52,7 @@ echo "---------------------------------------------------------------"
 REPO="https://github.com/cemu-project/Cemu"
 # Determine to build nightly or stable
 if [ "${DEVEL_RELEASE-}" = 1 ]; then
-	echo "Making nightly build of RigelEngine..."
+	echo "Making nightly build of Cemu..."
 	# Get the latest tag
     TAG=$(git ls-remote --tags --sort="v:refname" https://github.com/cemu-project/Cemu | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')
     # Get the short hash
@@ -60,7 +60,7 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
     VERSION="${TAG}-${HASH}"
     git clone --recursive "$REPO" ./Cemu
 else
-	echo "Making stable build of RigelEngine..."
+	echo "Making stable build of Cemu..."
 	VERSION="$(git ls-remote --tags --sort="v:refname" https://github.com/cemu-project/Cemu | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
 	git clone --branch v"$VERSION" --single-branch --recursive "$REPO" ./Cemu
 fi
