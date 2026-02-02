@@ -52,6 +52,7 @@ echo "---------------------------------------------------------------"
 #else
 	#TARGET_V3_CPU=1 make-aur-package cemu
 #fi
+make-aur-package wxgtk-git
 make-aur-package cubeb
 
 git clone --recursive https://github.com/cemu-project/Cemu
