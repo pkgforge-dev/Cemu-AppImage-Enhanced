@@ -62,7 +62,7 @@ cmake -D ALLOW_PORTABLE=OFF \
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-D ENABLE_VCPKG=OFF \
-		-Wno-dev -B build -S cemu
+		-Wno-dev -B build
 
 cmake --build build
 
