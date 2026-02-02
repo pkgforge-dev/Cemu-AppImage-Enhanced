@@ -84,6 +84,7 @@ echo "$VERSION" > ~/version
 cd Cemu
 mkdir -p build && cd build
 
+EXTRA_FLAGS=""
 # Add x86-64-v3 optimization only if on x86_64
 if [ "$ARCH" == "x86_64" ]; then
     echo "Detected x86_64: Adding TARGET_V3_CPU=1"
