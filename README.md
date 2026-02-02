@@ -7,7 +7,7 @@
 [![Latest Stable Release](https://img.shields.io/github/v/release/pkgforge-dev/Cemu-AppImage-Enhanced)](https://github.com/pkgforge-dev/Cemu-AppImage-Enhanced/releases/latest)
 
 <p align="center">
-  <img src="https://github.com/cemu-project.png" width="128" />
+  <img src="https://github.com/cemu-project/Cemu/blob/main/dist/linux/info.cemu.Cemu.png" width="128" />
 </p>
 
 
