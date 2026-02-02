@@ -8,6 +8,7 @@ echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm pipewire-audio pipewire-jack \
 	gcc-libs \
+	clang \
 	glslang \
 	hicolor-icon-theme \
 	libx11 \
