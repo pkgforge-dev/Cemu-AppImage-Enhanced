@@ -43,6 +43,10 @@ echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common ! llvm
 
+make-aur-package cubeb
+make-aur-package sdl2
+make-aur-package wxgtk-git
+
 echo "Building cemu..."
 echo "---------------------------------------------------------------"
 
@@ -54,9 +58,6 @@ echo "---------------------------------------------------------------"
 #else
 	#TARGET_V3_CPU=1 make-aur-package cemu
 #fi
-make-aur-package cubeb
-make-aur-package sdl2
-make-aur-package wxgtk-git
 
 git clone --recursive https://github.com/cemu-project/Cemu
 
