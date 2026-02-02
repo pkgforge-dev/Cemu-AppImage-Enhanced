@@ -59,8 +59,7 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
     HASH=$(git ls-remote "$REPO" HEAD | cut -c 1-8)
     VERSION="${TAG}-${HASH}"
     git clone --recursive "$REPO" ./Cemu
-else 
-stable is having issues upstream to compile
+else
 	echo "Making stable build of RigelEngine..."
 	VERSION="$(git ls-remote --tags --sort="v:refname" https://github.com/cemu-project/Cemu | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
 	git clone --branch v"$VERSION" --single-branch --recursive "$REPO" ./Cemu
