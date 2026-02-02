@@ -55,13 +55,10 @@ echo "$VERSION" > ~/version
 cd Cemu
 mkdir -p build && cd build
 
-EXTRA_FLAGS=""
-# Add x86-64-v3 optimization only if on x86_64
-if [ "$ARCH" == "x86_64" ]; then
-    echo "Detected x86_64: Adding TARGET_V3_CPU=1"
-    EXTRA_FLAGS="-DTARGET_V3_CPU=1"
-else
-    echo "Detected $ARCH: Skipping x86-64-v3 flags"
+
+if [ "$1" = 'v3' ] && [ "$ARCH" = 'x86_64' ]; then
+	echo "Making x86-64-v3 optimized build of Cemu..."
+	ARCH_FLAGS="-march=x86-64-v3 -O3"
 fi
 
 cmake .. -D ALLOW_PORTABLE=OFF \
@@ -69,8 +66,8 @@ cmake .. -D ALLOW_PORTABLE=OFF \
 	  -D CMAKE_C_COMPILER=clang \
 	  -D CMAKE_CXX_COMPILER=clang++ \
 	  -D CMAKE_EXE_LINKER_FLAGS="-lzstd" \
-	  -D CMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-	  -D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+	  -D CMAKE_C_FLAGS_RELEASE="$ARCH_FLAGS -DNDEBUG" \
+	  -D CMAKE_CXX_FLAGS_RELEASE="$ARCH_FLAGS -DNDEBUG" \
 	  -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 	  -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \ # Required for stable
 	  -D ENABLE_VCPKG=OFF \
