@@ -69,7 +69,9 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 		-Wno-dev
 	make -j $(nproc)
 	
-	cp -v ./bin/Cemu_release /usr/bin/cemu
+	mv -v ./bin/Cemu_release /usr/bin/cemu
+	mkdir -p /usr/share/Cemu
+	cp -r ./bin/* /usr/share/Cemu
 
 	sed -i -e 's|Exec=Cemu|Exec=cemu|g' ./dist/linux/info.cemu.Cemu.desktop
 	cp -v ./dist/linux/info.cemu.Cemu.desktop /usr/share/applications/Cemu.desktop
