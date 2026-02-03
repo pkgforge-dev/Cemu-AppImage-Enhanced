@@ -74,7 +74,7 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 		  -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 	 	  -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \ # Required for stable
 		  -D ENABLE_VCPKG=OFF \
-		  -Wno-dev -B build
+		  -Wno-dev
 	make -j $(nproc)
 
 	install -d /usr/bin /usr/share/Cemu
