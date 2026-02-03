@@ -63,7 +63,8 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 		echo "Making x86-64-v3 optimized build of Cemu..."
 		ARCH_FLAGS="-march=x86-64-v3 -O3"
 	fi
-
+	
+	# CMAKE_POLICY_VERSION_MINIMUM=3.5 required for stable
 	cmake .. -D ALLOW_PORTABLE=OFF \
 		  -D CMAKE_BUILD_TYPE=Release \
 	  	  -D CMAKE_C_COMPILER=clang \
@@ -72,7 +73,7 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 	 	  -D CMAKE_C_FLAGS_RELEASE="$ARCH_FLAGS -DNDEBUG" \
 		  -D CMAKE_CXX_FLAGS_RELEASE="$ARCH_FLAGS -DNDEBUG" \
 		  -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-	 	  -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \ # Required for stable
+	 	  -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \ 
 		  -D ENABLE_VCPKG=OFF \
 		  -Wno-dev
 	make -j $(nproc)
