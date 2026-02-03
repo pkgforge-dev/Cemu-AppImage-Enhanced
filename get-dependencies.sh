@@ -58,7 +58,7 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 	cd Cemu
 	mkdir -p build && cd build
 
-
+	ARCH_FLAGS=""
 	if [ "$ARCH" = 'x86_64' ]; then
 		echo "Making x86-64-v3 optimized build of Cemu..."
 		ARCH_FLAGS="-march=x86-64-v3 -O3"
