@@ -20,11 +20,9 @@ pacman -Syu --noconfirm \
 	libzip              \
 	llvm                \
 	nasm                \
-	pipewire-audio      \
-	pipewire-jack       \
 	pugixml             \
 	rapidjson           \
-	sdl2				\
+	sdl2                \
 	vulkan-headers      \
 	wayland-protocols   \
 	zarchive
@@ -64,11 +62,11 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 		-D CMAKE_C_FLAGS_RELEASE="$@"            \
 		-D CMAKE_CXX_FLAGS_RELEASE="$@"          \
 		-D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-		-D CMAKE_POLICY_VERSION_MINIMUM=3.5      \ 
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5      \
 		-D ENABLE_VCPKG=OFF                      \
 		-Wno-dev
 	make -j $(nproc)
-	
+
 	mv -v ./bin/Cemu_release /usr/bin/cemu
 	mkdir -p /usr/share/Cemu
 	cp -r ./bin/* /usr/share/Cemu
