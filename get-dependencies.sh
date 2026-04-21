@@ -52,7 +52,6 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 	cd ./Cemu
 	git rev-parse --short=9 HEAD > ~/version
 
-	# CMAKE_POLICY_VERSION_MINIMUM=3.5 required for stable
 	mkdir -p ./build && (
 		cd ./build
 		cmake ../ \
