@@ -64,7 +64,6 @@ if [ "${DEVEL_RELEASE-}" = 1 ]; then
 			-D CMAKE_C_FLAGS_RELEASE="$*"            \
 			-D CMAKE_CXX_FLAGS_RELEASE="$*"          \
 			-D CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-			-D CMAKE_POLICY_VERSION_MINIMUM=3.5      \
 			-D ENABLE_VCPKG=OFF                      \
 			-Wno-dev
 		make -j $(nproc)
