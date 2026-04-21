@@ -9,6 +9,7 @@ echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
 	bluez-libs          \
 	boost               \
+	boost-libs          \
 	clang               \
 	cmake               \
 	fmt                 \
