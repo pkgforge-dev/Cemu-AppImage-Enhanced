@@ -11,6 +11,7 @@ export ICON=https://raw.githubusercontent.com/cemu-project/Cemu/refs/heads/main/
 export DESKTOP=/usr/share/applications/Cemu.desktop
 export DEPLOY_OPENGL=1
 export DEPLOY_VULKAN=1
+export DEPLOY_SDL=1
 
 # Deploy dependencies
 quick-sharun /usr/bin/cemu
@@ -19,3 +20,7 @@ quick-sharun /usr/bin/cemu
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
+
+# Test the app for 12 seconds, if the test fails due to the app
+# having issues running in the CI use --simple-test instead
+quick-sharun --test ./dist/*.AppImage
