@@ -23,7 +23,7 @@ pacman -Syu --noconfirm \
 	nasm                \
 	pugixml             \
 	rapidjson           \
-	sdl2                \
+	sdl3                \
 	vulkan-headers      \
 	wayland-protocols   \
 	zarchive
