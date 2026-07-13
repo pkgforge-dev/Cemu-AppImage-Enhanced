@@ -48,12 +48,10 @@ fi
 
 if [ "${DEVEL_RELEASE-}" = 1 ]; then
 	echo "Making nightly build of Cemu..."
-    git clone --recursive --depth 1 "$REPO" ./Cemu
+	git clone --recursive --depth 1 "$REPO" ./Cemu
 	mkdir -p ./Cemu
 	cd ./Cemu
 	git rev-parse --short=9 HEAD > ~/version
-
-	git apply ../link-sdl3-before-wxwidgets.patch
 
 	mkdir -p ./build && (
 		cd ./build
